@@ -198,6 +198,7 @@ nodeWynn
   .then((r) => {
     return console.log(r);
   })
+  .catch((err) => 
     return console.error(err);
   });
   // Will log the response of an error 400
