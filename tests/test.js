@@ -16,7 +16,7 @@ async function test() {
     console.error(err);
   }
   try {
-    let recipe = await api.getRecipe("test");
+    let recipe = await api.getRecipe("Boots-30-33");
     console.log(recipe);
   } catch (err) {
     console.error(err);
