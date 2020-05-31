@@ -1,0 +1,27 @@
+{
+  "name": "node-wynn",
+  "version": "1.0.0",
+  "description": "An UPDATED Wynncraft Node.js library",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nitrogen2Oxygen/node-wynn.git"
+  },
+  "keywords": [
+    "wynncraft",
+    "wynn",
+    "api"
+  ],
+  "author": "Nitrogen2Oxygen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nitrogen2Oxygen/node-wynn/issues"
+  },
+  "homepage": "https://github.com/Nitrogen2Oxygen/node-wynn#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
