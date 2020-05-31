@@ -5,12 +5,12 @@ const fetch = require("node-fetch");
 /**
  * Gets a player object from uuid or name
  * @param {String} input - Either the UUID or player IGN
- * @returns Promise - Player stats object
+ * @returns Promise for player stats object
  */
 
 module.exports = (input) => {
   return new Promise(async (resolve, reject) => {
-    if (typeof ingredient !== "string")
+    if (typeof input !== "string")
       return reject(new TypeError("Invalid input"));
     let res = await fetch(
       `https://api.wynncraft.com/v2/ingredient/get/${input}`

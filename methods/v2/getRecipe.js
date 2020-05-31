@@ -3,18 +3,17 @@
 const fetch = require("node-fetch");
 
 /**
- * Gets an ingredient from a name or
- * @param {String} input - Ingredient name
- * @returns Promise for ingredient object
+ * Gets a recipe from a name
+ * @param {String} input - Recipe name
+ * @returns Promise for Recipe object
  */
 
-module.exports = (ingredient) => {
+module.exports = (recipe) => {
   return new Promise(async (resolve, reject) => {
     if (typeof ingredient !== "string")
       return reject(new TypeError("Invalid input"));
-    ingredient = ingredient.replace(" ", "_"); // Error with API, fixed with this command
     let res = await fetch(
-      `https://api.wynncraft.com/v2/ingredient/get/${ingredient}`
+      `https://api.wynncraft.com/v2/ingredient/get/${recipe}`
     );
     if (res.status !== 200) return reject(res);
     let json = await res.json();
