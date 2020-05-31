@@ -45,4 +45,10 @@ async function test() {
   } catch (err) {
     console.error(err);
   }
+  try {
+    let lb = await api.getLeaderboards("guild");
+    console.log(lb);
+  } catch (err) {
+    console.error(err);
+  }
 }

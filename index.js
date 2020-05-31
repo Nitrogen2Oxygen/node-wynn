@@ -16,4 +16,5 @@ module.exports = {
   getOnline: require("./methods/legacy/getOnline.js"),
   getGuild: require("./methods/legacy/getGuild.js"),
   getItem: require("./methods/legacy/getItem.js"),
+  getLeaderboards: require("./methods/legacy/getLeaderboards.js"),
 };
