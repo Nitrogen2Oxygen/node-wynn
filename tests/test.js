@@ -33,4 +33,10 @@ async function test() {
   } catch (err) {
     console.error(err);
   }
+  try {
+    let guild = await api.getGuild("Kingdom Foxes");
+    console.log(guild);
+  } catch (err) {
+    console.error(err);
+  }
 }

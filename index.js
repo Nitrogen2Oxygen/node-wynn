@@ -3,7 +3,7 @@
 /**
  * index.js
  * ==============
- * Returns the main object for the module.
+ * The main object for the module.
  */
 
 module.exports = {
@@ -14,4 +14,5 @@ module.exports = {
   // Legacy
   getTerritories: require("./methods/legacy/getTerritories.js"),
   getOnline: require("./methods/legacy/getOnline.js"),
+  getGuild: require("./methods/legacy/getGuild.js"),
 };
