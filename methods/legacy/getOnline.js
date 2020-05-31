@@ -8,7 +8,7 @@ const fetch = require("node-fetch");
  * @returns online players object
  */
 
-module.exports = (input, world = false) => {
+module.exports = (world = false) => {
   return new Promise((resolve, reject) => {
     if (world && typeof world !== "string")
       return reject(new TypeError("Invalid territory"));

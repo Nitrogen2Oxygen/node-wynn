@@ -8,7 +8,7 @@ const fetch = require("node-fetch");
  * @returns territory object
  */
 
-module.exports = (input, territory = false) => {
+module.exports = (territory = false) => {
   return new Promise((resolve, reject) => {
     if (territory && typeof territory !== "string")
       return reject(new TypeError("Invalid territory"));
