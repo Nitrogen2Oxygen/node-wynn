@@ -12,4 +12,5 @@ module.exports = {
   getIngredient: require("./methods/v2/getIngredient.js"),
   getRecipe: require("./methods/v2/getRecipe.js"),
   // Legacy
+  getTerritories: require("./methods/legacy/getTerritories.js"),
 };

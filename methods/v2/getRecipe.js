@@ -10,7 +10,7 @@ const fetch = require("node-fetch");
 
 module.exports = (recipe) => {
   return new Promise(async (resolve, reject) => {
-    if (typeof ingredient !== "string")
+    if (typeof recipe !== "string")
       return reject(new TypeError("Invalid input"));
     let res = await fetch(
       `https://api.wynncraft.com/v2/ingredient/get/${recipe}`
