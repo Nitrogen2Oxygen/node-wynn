@@ -9,14 +9,16 @@ const fetch = require("node-fetch");
  */
 
 module.exports = (recipe) => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (typeof recipe !== "string")
       return reject(new TypeError("Invalid input"));
-    let res = await fetch(
-      `https://api.wynncraft.com/v2/ingredient/get/${recipe}`
+    fetch(`https://api.wynncraft.com/v2/ingredient/get/${recipe}`).then(
+      (res) => {
+        if (res.status !== 200) return reject(res);
+        res.json().then((json) => {
+          return resolve(json.data[0]);
+        });
+      }
     );
-    if (res.status !== 200) return reject(res);
-    let json = await res.json();
-    return resolve(json.data[0]);
   });
 };

@@ -9,21 +9,23 @@ const fetch = require("node-fetch");
  */
 
 module.exports = (input, territory = false) => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (territory && typeof territory !== "string")
       return reject(new TypeError("Invalid territory"));
-    let res = await fetch(
+    fetch(
       "https://api-legacy.wynncraft.com/public_api.php?action=territoryList"
-    );
-    if (res.status !== 200) return reject(res);
-    let json = await res.json();
-    if (!json.territories) return reject(json.territories);
-    if (territory) {
-      if (json.territories[territory])
-        return resolve(json.territories[territory]);
-      return reject(new TypeError("Invalid territory"));
-    } else {
-      return resolve(json.territories);
-    }
+    ).then((res) => {
+      if (res.status !== 200) return reject(res);
+      res.json().then((json) => {
+        if (!json.territories) return reject(json.territories);
+        if (territory) {
+          if (json.territories[territory])
+            return resolve(json.territories[territory]);
+          return reject(new TypeError("Invalid territory"));
+        } else {
+          return resolve(json.territories);
+        }
+      });
+    });
   });
 };
