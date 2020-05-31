@@ -3,7 +3,7 @@
 const fetch = require("node-fetch");
 
 /**
- * Gets the territories object or a single territory
+ * Gets guild info from a guild name
  * @param {String} [guild] - Guild to get the data from
  * @returns guild stats object
  */

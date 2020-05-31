@@ -15,4 +15,5 @@ module.exports = {
   getTerritories: require("./methods/legacy/getTerritories.js"),
   getOnline: require("./methods/legacy/getOnline.js"),
   getGuild: require("./methods/legacy/getGuild.js"),
+  getItem: require("./methods/legacy/getItem.js"),
 };

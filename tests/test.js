@@ -39,4 +39,10 @@ async function test() {
   } catch (err) {
     console.error(err);
   }
+  try {
+    let item = await api.getItem("Pure");
+    console.log(item);
+  } catch (err) {
+    console.error(err);
+  }
 }
