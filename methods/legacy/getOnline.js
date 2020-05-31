@@ -4,8 +4,8 @@ const fetch = require("node-fetch");
 
 /**
  * Gets the current online players or one specific world
- * @param {String} [territory=false] - Single territory that wants to be returned
- * @returns territory object
+ * @param {String} [world=false] - Single world that wants to be returned
+ * @returns online players object
  */
 
 module.exports = (input, world = false) => {
@@ -17,7 +17,6 @@ module.exports = (input, world = false) => {
     ).then((res) => {
       if (res.status !== 200) return reject(res);
       res.json().then((json) => {
-        if (!json.territories) return reject(json.territories);
         if (world) {
           if (json[world]) return resolve(json[world]);
           return reject(new TypeError("Invalid world"));
