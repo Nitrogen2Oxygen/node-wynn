@@ -12,13 +12,11 @@ module.exports = (input) => {
   return new Promise((resolve, reject) => {
     if (typeof input !== "string")
       return reject(new TypeError("Invalid input"));
-    fetch(`https://api.wynncraft.com/v2/ingredient/get/${input}`).then(
-      (res) => {
-        if (res.status !== 200) return reject(res);
-        res.json().then((json) => {
-          return resolve(json.data[0]);
-        });
-      }
-    );
+    fetch(`https://api.wynncraft.com/v2/player/${input}/stats`).then((res) => {
+      if (res.status !== 200) return reject(res);
+      res.json().then((json) => {
+        return resolve(json.data[0]);
+      });
+    });
   });
 };
