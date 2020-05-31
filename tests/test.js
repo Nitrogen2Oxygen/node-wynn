@@ -27,4 +27,10 @@ async function test() {
   } catch (err) {
     console.error(err);
   }
+  try {
+    let online = await api.getOnline();
+    console.log(online);
+  } catch (err) {
+    console.error(err);
+  }
 }
