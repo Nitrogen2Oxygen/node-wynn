@@ -8,4 +8,5 @@
 
 module.exports = {
   getPlayer: require("./methods/v2/getPlayer.js"),
+  getIngredient: require("./methods/v2/getIngredient.js"),
 };

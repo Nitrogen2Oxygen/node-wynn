@@ -1,3 +1,5 @@
+"use strict";
+
 const fetch = require("node-fetch");
 
 /**
@@ -8,6 +10,7 @@ const fetch = require("node-fetch");
 
 module.exports = (input) => {
   return new Promise((res, rej) => {
+    if (typeof input !== "string") return rej(new TypeError("Invalid input"));
     fetch(`https://api.wynncraft.com/v2/player/${input}/stats`)
       .then((r) => r.json())
       .then((body) => {
