@@ -12,13 +12,11 @@ module.exports = (recipe) => {
   return new Promise((resolve, reject) => {
     if (typeof recipe !== "string")
       return reject(new TypeError("Invalid input"));
-    fetch(`https://api.wynncraft.com/v2/ingredient/get/${recipe}`).then(
-      (res) => {
-        if (res.status !== 200) return reject(res);
-        res.json().then((json) => {
-          return resolve(json.data[0]);
-        });
-      }
-    );
+    fetch(`https://api.wynncraft.com/v2/recipe/get/${recipe}`).then((res) => {
+      if (res.status !== 200) return reject(res);
+      res.json().then((json) => {
+        return resolve(json.data[0]);
+      });
+    });
   });
 };

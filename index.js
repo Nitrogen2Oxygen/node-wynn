@@ -17,4 +17,5 @@ module.exports = {
   getGuild: require("./methods/legacy/getGuild.js"),
   getItem: require("./methods/legacy/getItem.js"),
   getLeaderboards: require("./methods/legacy/getLeaderboards.js"),
+  getGuildList: require("./methods/legacy/getGuildList.js"),
 };
