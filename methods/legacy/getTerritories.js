@@ -23,7 +23,7 @@ module.exports = (territory = false) => {
             return resolve(json.territories[territory]);
           return reject(new TypeError("Invalid territory"));
         } else {
-          return resolve(json.territories);
+          return resolve(json);
         }
       });
     });

@@ -15,7 +15,7 @@ module.exports = () => {
       if (res.status !== 200) return reject(res);
       res.json().then((json) => {
         if (!json.guilds) return reject(json);
-        return resolve(json.guilds);
+        return resolve(json);
       });
     });
   });

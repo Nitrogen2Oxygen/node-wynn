@@ -1,6 +1,6 @@
 {
   "name": "node-wynn",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "An UPDATED Wynncraft Node.js library",
   "main": "index.js",
   "scripts": {
