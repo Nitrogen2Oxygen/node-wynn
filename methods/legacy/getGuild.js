@@ -13,7 +13,7 @@ module.exports = (guild) => {
     if (typeof guild !== "string")
       return reject(new TypeError("Invalid guild"));
     fetch(
-      `https://api-legacy.wynncraft.com/public_api.php?action=guildStats&command=${guild}`
+      `https://api.wynncraft.com/public_api.php?action=guildStats&command=${guild}`
     ).then((res) => {
       if (res.status !== 200) return reject(res);
       res.json().then((json) => {

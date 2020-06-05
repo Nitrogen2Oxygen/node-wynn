@@ -12,18 +12,18 @@ module.exports = (world = false) => {
   return new Promise((resolve, reject) => {
     if (world && typeof world !== "string")
       return reject(new TypeError("Invalid territory"));
-    fetch(
-      "https://api-legacy.wynncraft.com/public_api.php?action=onlinePlayers"
-    ).then((res) => {
-      if (res.status !== 200) return reject(res);
-      res.json().then((json) => {
-        if (world) {
-          if (json[world]) return resolve(json[world]);
-          return reject(new TypeError("Invalid world"));
-        } else {
-          return resolve(json);
-        }
-      });
-    });
+    fetch("https://api.wynncraft.com/public_api.php?action=onlinePlayers").then(
+      (res) => {
+        if (res.status !== 200) return reject(res);
+        res.json().then((json) => {
+          if (world) {
+            if (json[world]) return resolve(json[world]);
+            return reject(new TypeError("Invalid world"));
+          } else {
+            return resolve(json);
+          }
+        });
+      }
+    );
   });
 };
