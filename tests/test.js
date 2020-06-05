@@ -1,6 +1,8 @@
 const api = require("../index.js");
+require("dotenv").config();
+const { KEY } = process.env;
 const config = {
-  key: null,
+  key: KEY,
   url: "https://api.wynncraft.com",
   agent: `NodeWynn/test`,
   timeout: 5000,
