@@ -25,7 +25,7 @@ yarn add node-wynn
 You can require the entire package like this:
 
 ```js
-const nodeWynn = require("node-wynn");
+const NodeWynn = require("node-wynn");
 ```
 
 Or for ease of use, you can call functions directly like this:
@@ -33,6 +33,35 @@ Or for ease of use, you can call functions directly like this:
 ```js
 const { getPlayer, getGuild } = require("node-wynn");
 ```
+
+## Basics
+
+### Example
+
+An example of getting player data from the name "Salted"
+
+```js
+let config = {/* Config */}
+NodeWynn
+  .getPlayer("Salted", config);
+  .then((r) => {
+    // Handle player data
+  })
+  .catch((err) => {
+    // Handle error
+  });
+
+```
+
+### Config
+
+| Key          | Type    | Function                                                | Default Value               |
+| ------------ | ------- | ------------------------------------------------------- | --------------------------- |
+| `key`        | String  | The API key for getting requests                        | `null`                      |
+| `url`        | String  | The base url for handling requests                      | `https://api.wynncraft.com` |
+| `agent`      | String  | The User agent of the request                           | `NodeWynn/v{version}`       |
+| `timeout`    | Number  | The number of milliseconds before auto timing out       | `20000`                     |
+| `removeMeta` | Boolean | Removes none vital information (such as request object) | `false`                     |
 
 ## Usage
 
@@ -47,8 +76,8 @@ All methods will return a promise. For info on promises, please see [here](https
 Gets a player's data from their UUID or IGN
 
 ```js
-nodeWynn
-  .getPlayer("Nitrogen2Oxygen");
+NodeWynn
+  .getPlayer("Nitrogen2Oxygen", config);
   .then((r) => {
     // Handle player data
   })
@@ -62,8 +91,8 @@ nodeWynn
 Gets an ingredient's info from the name
 
 ```js
-nodeWynn
-  .getIngredient("Sought-After Ore");
+NodeWynn
+  .getIngredient("Sought-After Ore", config);
   .then((r) => {
     // Handle ingredient
   })
@@ -77,8 +106,8 @@ nodeWynn
 Gets a recipe from the name and level range as a string
 
 ```js
-nodeWynn
-  .getRecipe("Boots-30-33");
+NodeWynn
+  .getRecipe("Boots-30-33", config);
   .then((r) => {
     // Handle recipe
   })
@@ -92,11 +121,10 @@ nodeWynn
 #### getTerritories
 
 Gets the list of territories and data from them.
-OPTIONAL: Input a specific territory name to only get data from that territory
 
 ```js
-nodeWynn
-  .getTerritories(/* Optional single territory input */);
+NodeWynn
+  .getTerritories(config);
   .then((r) => {
     // Handle territories
   })
@@ -108,11 +136,10 @@ nodeWynn
 #### getOnline
 
 Gets the list of online worlds and the players in them.
-OPTIONAL: Input a specific world to only get data from that world.
 
 ```js
-nodeWynn
-  .getOnline(/* Optional world input */);
+NodeWynn
+  .getOnline(config);
   .then((r) => {
     // Handle worlds
   })
@@ -126,8 +153,8 @@ nodeWynn
 Gets item data from the name. Will return an error if no items appear in the search.
 
 ```js
-nodeWynn
-  .getItem("Pure");
+NodeWynn
+  .getItem("Pure", config);
   .then((r) => {
     // Handle item
   })
@@ -142,8 +169,8 @@ Gets a guild from the guild name.
 WARNING: Using a guild tag WILL NOT WORK.
 
 ```js
-nodeWynn
-  .getGuild("Kingdom Foxes");
+NodeWynn
+  .getGuild("Kingdom Foxes", config);
   .then((r) => {
     // Handle guild
   })
@@ -157,8 +184,8 @@ nodeWynn
 Gets a list of all active guilds
 
 ```js
-nodeWynn
-  .getGuildList();
+NodeWynn
+  .getGuildList(config);
   .then((r) => {
     // Handle guild list
   })
@@ -172,8 +199,8 @@ nodeWynn
 Gets leaderboard data from one of the 3 leaderboards: player, guild and pvp
 
 ```js
-nodeWynn
-  .getLeaderboard(/* player, guild, pvp */);
+NodeWynn
+  .getLeaderboard(/* player, guild, pvp */, config);
   .then((r) => {
     // Handle guild list
   })
@@ -189,16 +216,16 @@ An error will be thrown if the data cannot be obtained properly. This can either
 An example of error handling from getPlayer
 
 ```js
-const nodeWynn = require("node-wynn");
+const NodeWynn = require("node-wynn");
 
 let player = "beieheieihieeffie";
 
-nodeWynn
+NodeWynn
   .getPlayer(player);
   .then((r) => {
     return console.log(r);
   })
-  .catch((err) => 
+  .catch((err) =>
     return console.error(err);
   });
   // Will log the response of an error 400

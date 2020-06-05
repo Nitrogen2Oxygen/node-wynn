@@ -1,29 +1,22 @@
 "use strict";
 
-const fetch = require("node-fetch");
+const fetch = require("../fetch");
 
 /**
  * Gets the current online players or one specific world
- * @param {String} [world=false] - Single world that wants to be returned
  * @returns online players object
  */
 
-module.exports = (world = false) => {
+module.exports = (config) => {
   return new Promise((resolve, reject) => {
-    if (world && typeof world !== "string")
-      return reject(new TypeError("Invalid territory"));
-    fetch("https://api.wynncraft.com/public_api.php?action=onlinePlayers").then(
-      (res) => {
-        if (res.status !== 200) return reject(res);
-        res.json().then((json) => {
-          if (world) {
-            if (json[world]) return resolve(json[world]);
-            return reject(new TypeError("Invalid world"));
-          } else {
-            return resolve(json);
-          }
-        });
-      }
-    );
+    let url = `${config.url}/public_api.php?action=onlinePlayers`;
+    fetch(url, config.key, config.agent, config.timeout)
+      .then((json) => {
+        if (config.removeMeta) delete json.request;
+        return resolve(json);
+      })
+      .catch((err) => {
+        return reject(err);
+      });
   });
 };

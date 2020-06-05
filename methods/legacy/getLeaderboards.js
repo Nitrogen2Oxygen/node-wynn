@@ -1,6 +1,6 @@
 "use strict";
 
-const fetch = require("node-fetch");
+const fetch = require("../fetch");
 
 /**
  * Gets leaderboard data
@@ -8,18 +8,19 @@ const fetch = require("node-fetch");
  * @returns leaderboard object
  */
 
-module.exports = (type) => {
+module.exports = (type, config) => {
   return new Promise((resolve, reject) => {
     if (typeof type !== "string" && !["player", "guild", "pvp"].includes(type))
       return reject(new TypeError("Invalid leaderboard type"));
-    fetch(
-      `https://api.wynncraft.com/public_api.php?action=statsLeaderboard&type=${type}&timeframe=alltime`
-    ).then((res) => {
-      if (res.status !== 200) return reject(res);
-      res.json().then((json) => {
+    let url = `${config.url}/public_api.php?action=statsLeaderboard&type=${type}&timeframe=alltime`;
+    fetch(url, config.key, config.agent, config.timeout)
+      .then((json) => {
         if (json.data.length < 1) reject(json);
-        resolve(json);
+        if (config.removeMeta) return resolve(json.data);
+        return resolve(json);
+      })
+      .catch((err) => {
+        return reject(err);
       });
-    });
   });
 };

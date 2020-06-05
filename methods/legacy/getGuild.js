@@ -1,6 +1,6 @@
 "use strict";
 
-const fetch = require("node-fetch");
+const fetch = require("../fetch");
 
 /**
  * Gets guild info from a guild name
@@ -8,18 +8,19 @@ const fetch = require("node-fetch");
  * @returns guild stats object
  */
 
-module.exports = (guild) => {
+module.exports = (guild, config) => {
   return new Promise((resolve, reject) => {
     if (typeof guild !== "string")
       return reject(new TypeError("Invalid guild"));
-    fetch(
-      `https://api.wynncraft.com/public_api.php?action=guildStats&command=${guild}`
-    ).then((res) => {
-      if (res.status !== 200) return reject(res);
-      res.json().then((json) => {
+    let url = `${config.url}/public_api.php?action=guildStats&command=${guild}`;
+    fetch(url, config.key, config.agent, config.timeout)
+      .then((json) => {
         if (json.error) reject(json);
+        if (config.removeMeta) delete json.request;
         resolve(json);
+      })
+      .catch((err) => {
+        return reject(err);
       });
-    });
   });
 };

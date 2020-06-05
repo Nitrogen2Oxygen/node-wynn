@@ -1,22 +1,23 @@
 "use strict";
 
-const fetch = require("node-fetch");
+const fetch = require("../fetch");
 
 /**
  * Gets the list of all guilds
  * @returns guild list object
  */
 
-module.exports = () => {
+module.exports = (config) => {
   return new Promise((resolve, reject) => {
-    fetch("https://api.wynncraft.com/public_api.php?action=guildList").then(
-      (res) => {
-        if (res.status !== 200) return reject(res);
-        res.json().then((json) => {
-          if (!json.guilds) return reject(json);
-          return resolve(json);
-        });
-      }
-    );
+    let url = `${config.url}/public_api.php?action=guildList`;
+    fetch(url, config.key, config.agent, config.timeout)
+      .then((json) => {
+        if (!json.guilds) return reject(json);
+        if (config.removeMeta) return resolve(json.guilds);
+        return resolve(json);
+      })
+      .catch((err) => {
+        return reject(err);
+      });
   });
 };
