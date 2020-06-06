@@ -8,7 +8,7 @@ const fetch = require("../fetch");
  * @returns item object
  */
 
-module.exports = (item, config) => {
+module.exports = (item, config = {}) => {
   return new Promise((resolve, reject) => {
     if (typeof item !== "string") return reject(new TypeError("Invalid item"));
     let url = `${config.url}/public_api.php?action=itemDB&search=${item}`;

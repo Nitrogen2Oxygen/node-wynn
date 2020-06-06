@@ -8,7 +8,7 @@ const fetch = require("../fetch");
  * @returns Promise for Recipe object
  */
 
-module.exports = (recipe, config) => {
+module.exports = (recipe, config = {}) => {
   return new Promise((resolve, reject) => {
     if (typeof recipe !== "string")
       return reject(new TypeError("Invalid input"));
