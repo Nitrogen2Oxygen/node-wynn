@@ -8,7 +8,7 @@ const fetch = require("../fetch");
  * @returns guild stats object
  */
 
-module.exports = (guild, config = {}) => {
+module.exports = (guild, config) => {
   return new Promise((resolve, reject) => {
     if (typeof guild !== "string")
       return reject(new TypeError("Invalid guild"));

@@ -7,7 +7,7 @@ const fetch = require("../fetch");
  * @returns territory object
  */
 
-module.exports = (config = {}) => {
+module.exports = (config) => {
   return new Promise((resolve, reject) => {
     let url = `${config.url}/public_api.php?action=territoryList`;
     fetch(url, config.key, config.agent, config.timeout)

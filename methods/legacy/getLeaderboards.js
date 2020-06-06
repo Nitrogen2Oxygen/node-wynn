@@ -8,7 +8,7 @@ const fetch = require("../fetch");
  * @returns leaderboard object
  */
 
-module.exports = (type, config = {}) => {
+module.exports = (type, config) => {
   return new Promise((resolve, reject) => {
     if (typeof type !== "string" && !["player", "guild", "pvp"].includes(type))
       return reject(new TypeError("Invalid leaderboard type"));

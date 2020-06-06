@@ -8,7 +8,7 @@ const fetch = require("../fetch.js");
  * @returns Promise for player stats object
  */
 
-module.exports = (input, config = {}) => {
+module.exports = (input, config) => {
   return new Promise((resolve, reject) => {
     if (typeof input !== "string")
       return reject(new TypeError("Invalid input"));
