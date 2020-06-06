@@ -9,12 +9,12 @@ module.exports = (url, key, agent, timeout) => {
         didTimeout = true;
         reject(new Error("Request timed out"));
       }, timeout);
+    let header = {};
+    if (agent) header["User-Agent"] = agent;
+    if (key) header.apikey = key;
     fetch(url, {
-      // TODO: Handle API key
       method: "GET",
-      headers: {
-        "User-Agent": agent,
-      },
+      headers: header,
     })
       .then((res) => {
         clearTimeout(urlTimeout);

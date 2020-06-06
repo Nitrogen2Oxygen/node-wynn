@@ -8,6 +8,7 @@ const config = {
   timeout: 5000,
   removeMeta: true,
 };
+const shouldLog = false; // For me testing stuff
 
 test();
 
@@ -19,7 +20,7 @@ async function test() {
       "8f52f20c-39f6-49a4-b08a-c2232a6b8f60",
       config
     );
-    console.log(player);
+    if (shouldLog) console.log(player);
     success.push("player");
   } catch (err) {
     console.error(err);
@@ -27,7 +28,7 @@ async function test() {
   }
   try {
     let ingredient = await api.getIngredient("Sought-After Ore", config);
-    console.log(ingredient);
+    if (shouldLog) console.log(ingredient);
     success.push("ingredient");
   } catch (err) {
     console.error(err);
@@ -35,7 +36,7 @@ async function test() {
   }
   try {
     let recipe = await api.getRecipe("Boots-30-33", config);
-    console.log(recipe);
+    if (shouldLog) console.log(recipe);
     success.push("recipe");
   } catch (err) {
     console.error(err);
@@ -43,7 +44,7 @@ async function test() {
   }
   try {
     let territory = await api.getTerritories(config);
-    console.log(territory);
+    if (shouldLog) console.log(territory);
     success.push("territories");
   } catch (err) {
     console.error(err);
@@ -51,7 +52,7 @@ async function test() {
   }
   try {
     let online = await api.getOnline(config);
-    console.log(online);
+    if (shouldLog) console.log(online);
     success.push("online");
   } catch (err) {
     console.error(err);
@@ -59,7 +60,7 @@ async function test() {
   }
   try {
     let guild = await api.getGuild("Kingdom Foxes", config);
-    console.log(guild);
+    if (shouldLog) console.log(guild);
     success.push("guild");
   } catch (err) {
     console.error(err);
@@ -67,7 +68,7 @@ async function test() {
   }
   try {
     let item = await api.getItem("Pure", config);
-    console.log(item);
+    if (shouldLog) console.log(item);
     success.push("item");
   } catch (err) {
     console.error(err);
@@ -75,7 +76,7 @@ async function test() {
   }
   try {
     let lb = await api.getLeaderboards("guild", config);
-    console.log(lb);
+    if (shouldLog) console.log(lb);
     success.push("leaderboards");
   } catch (err) {
     console.error(err);
@@ -83,7 +84,7 @@ async function test() {
   }
   try {
     let list = await api.getGuildList(config);
-    console.log(list);
+    if (shouldLog) console.log(list);
     success.push("guildList");
   } catch (err) {
     console.error(err);
