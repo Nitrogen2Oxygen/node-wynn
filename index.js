@@ -26,11 +26,6 @@ const defaultConfig = {
  * The main object for the module.
  */
 
-/**
- * Creates and instance of the new API handler
- * @param {Object} config - Config object for the instance
- */
-
 async function parseConfig(config) {
   let parsedConfig = {};
   parsedConfig.key =
@@ -63,11 +58,11 @@ class NodeWynn {
   }
   static async getTerritories(terr, config = {}) {
     let parsed = await parseConfig(config);
-    return getTerritories(terr, parsed);
+    return getTerritories(parsed);
   }
   static async getOnline(world, config = {}) {
     let parsed = await parseConfig(config);
-    return getOnline(world, parsed);
+    return getOnline(parsed);
   }
   static async getGuild(guild, config = {}) {
     let parsed = await parseConfig(config);
