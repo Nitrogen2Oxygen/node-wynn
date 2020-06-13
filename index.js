@@ -56,11 +56,11 @@ class NodeWynn {
     let parsed = await parseConfig(config);
     return getRecipe(input, parsed);
   }
-  static async getTerritories(terr, config = {}) {
+  static async getTerritories(config = {}) {
     let parsed = await parseConfig(config);
     return getTerritories(parsed);
   }
-  static async getOnline(world, config = {}) {
+  static async getOnline(config = {}) {
     let parsed = await parseConfig(config);
     return getOnline(parsed);
   }
