@@ -2,12 +2,6 @@
 
 const fetch = require("../fetch");
 
-/**
- * Gets an ingredient from a name or
- * @param {String} input - Ingredient name
- * @returns Promise for ingredient object
- */
-
 module.exports = (ingredient, config) => {
   return new Promise((resolve, reject) => {
     if (typeof ingredient !== "string")

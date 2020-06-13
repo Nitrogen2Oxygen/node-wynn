@@ -2,12 +2,6 @@
 
 const fetch = require("../fetch");
 
-/**
- * Gets leaderboard data
- * @param {String} [type] - Type of leaderboard: player, guild, pvp
- * @returns leaderboard object
- */
-
 module.exports = (type, config) => {
   return new Promise((resolve, reject) => {
     if (typeof type !== "string" && !["player", "guild", "pvp"].includes(type))

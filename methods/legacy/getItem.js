@@ -2,12 +2,6 @@
 
 const fetch = require("../fetch");
 
-/**
- * Gets item data from a single item
- * @param {String} [item] - Name of the item
- * @returns item object
- */
-
 module.exports = (item, config) => {
   return new Promise((resolve, reject) => {
     if (typeof item !== "string") return reject(new TypeError("Invalid item"));

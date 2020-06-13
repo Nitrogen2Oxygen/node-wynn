@@ -2,11 +2,6 @@
 
 const fetch = require("../fetch");
 
-/**
- * Gets the list of all guilds
- * @returns guild list object
- */
-
 module.exports = (config) => {
   return new Promise((resolve, reject) => {
     let url = `${config.url}/public_api.php?action=guildList`;

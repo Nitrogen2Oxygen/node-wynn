@@ -2,12 +2,6 @@
 
 const fetch = require("../fetch.js");
 
-/**
- * Gets a player object from uuid or name
- * @param {String} input - Either the UUID or player IGN
- * @returns Promise for player stats object
- */
-
 module.exports = (input, config) => {
   return new Promise((resolve, reject) => {
     if (typeof input !== "string")

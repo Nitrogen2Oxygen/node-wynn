@@ -2,12 +2,6 @@
 
 const fetch = require("../fetch");
 
-/**
- * Gets a recipe from a name
- * @param {String} input - Recipe name
- * @returns Promise for Recipe object
- */
-
 module.exports = (recipe, config) => {
   return new Promise((resolve, reject) => {
     if (typeof recipe !== "string")

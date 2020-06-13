@@ -2,11 +2,6 @@
 
 const fetch = require("../fetch");
 
-/**
- * Gets the territories object or a single territory
- * @returns territory object
- */
-
 module.exports = (config) => {
   return new Promise((resolve, reject) => {
     let url = `${config.url}/public_api.php?action=territoryList`;

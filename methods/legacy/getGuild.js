@@ -2,12 +2,6 @@
 
 const fetch = require("../fetch");
 
-/**
- * Gets guild info from a guild name
- * @param {String} [guild] - Guild to get the data from
- * @returns guild stats object
- */
-
 module.exports = (guild, config) => {
   return new Promise((resolve, reject) => {
     if (typeof guild !== "string")
