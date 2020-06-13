@@ -2,11 +2,11 @@ const api = require("../index.js");
 require("dotenv").config();
 const { KEY } = process.env;
 const config = {
-  /* key: KEY,
+  key: KEY,
   url: "https://api.wynncraft.com",
   agent: `NodeWynn/test`,
-  timeout: 5000,
-  removeMeta: true, */
+  timeout: 20000,
+  removeMeta: true,
 };
 const shouldLog = false; // For me testing stuff
 
