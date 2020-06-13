@@ -1,6 +1,15 @@
 const fetch = require("node-fetch");
 const AbortController = require("abort-controller");
 
+/**
+ * Moditifed fetch command used in requests
+ * @param {String} url - The base URL for HTTP requests
+ * @param {String} key - The user's API key if provided
+ * @param {String} agent - The User Agent of the request
+ * @param {Number} timeout - The timeout in seconds for the request
+ * @returns {Promise} Promise for node-fetch request
+ */
+
 module.exports = (url, key, agent, timeout) => {
   let controller;
   let urlTimeout;

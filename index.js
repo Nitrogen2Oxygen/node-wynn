@@ -1,4 +1,10 @@
+/**
+ * @author Nitrogen2Oxygen <https://github.com/Nitrogen2Oxygen>
+ * See LICENSE file in root directory for license data
+ */
+
 "use strict";
+
 var version = require("./package.json").version;
 
 // v2
@@ -20,13 +26,8 @@ const defaultConfig = {
   timeout: 20000,
   removeMeta: false,
 };
-/**
- * index.js
- * ==============
- * The main object for the module.
- */
 
-async function parseConfig(config) {
+function parseConfig(config) {
   let parsedConfig = {};
   parsedConfig.key =
     typeof config.key === "string" ? config.key : defaultConfig.key;
@@ -44,40 +45,83 @@ async function parseConfig(config) {
 }
 
 class NodeWynn {
-  static async getPlayer(input, config = {}) {
-    let parsed = await parseConfig(config);
+  /**
+   * NodeWynn optional constructor for less redundancy.
+   */
+  constructor(config) {
+    this.config = parseConfig(config);
+    console.log(this.config);
+  }
+
+  /**
+   * Class methods will use the config provided in the constructor.
+   * Used for less redundancy.
+   */
+  getPlayer(input) {
+    return getPlayer(input, this.config);
+  }
+  getIngredient(input) {
+    return getIngredient(input, this.config);
+  }
+  getRecipe(input) {
+    return getRecipe(input, this.config);
+  }
+  getTerritories() {
+    return getTerritories(this.config);
+  }
+  getOnline() {
+    return getOnline(this.config);
+  }
+  getGuild(guild) {
+    return getGuild(guild, this.config);
+  }
+  getItem(item) {
+    return getItem(item, this.config);
+  }
+  getLeaderboards(type) {
+    return getLeaderboards(type, this.config);
+  }
+  getGuildList() {
+    return getGuildList(this.config);
+  }
+
+  /**
+   * Static methods for quick requests.
+   */
+  static getPlayer(input, config = {}) {
+    let parsed = parseConfig(config);
     return getPlayer(input, parsed);
   }
-  static async getIngredient(input, config = {}) {
-    let parsed = await parseConfig(config);
+  static getIngredient(input, config = {}) {
+    let parsed = parseConfig(config);
     return getIngredient(input, parsed);
   }
-  static async getRecipe(input, config = {}) {
-    let parsed = await parseConfig(config);
+  static getRecipe(input, config = {}) {
+    let parsed = parseConfig(config);
     return getRecipe(input, parsed);
   }
-  static async getTerritories(config = {}) {
-    let parsed = await parseConfig(config);
+  static getTerritories(config = {}) {
+    let parsed = parseConfig(config);
     return getTerritories(parsed);
   }
-  static async getOnline(config = {}) {
-    let parsed = await parseConfig(config);
+  static getOnline(config = {}) {
+    let parsed = parseConfig(config);
     return getOnline(parsed);
   }
-  static async getGuild(guild, config = {}) {
-    let parsed = await parseConfig(config);
+  static getGuild(guild, config = {}) {
+    let parsed = parseConfig(config);
     return getGuild(guild, parsed);
   }
-  static async getItem(item, config = {}) {
-    let parsed = await parseConfig(config);
+  static getItem(item, config = {}) {
+    let parsed = parseConfig(config);
     return getItem(item, parsed);
   }
-  static async getLeaderboards(type, config = {}) {
-    let parsed = await parseConfig(config);
+  static getLeaderboards(type, config = {}) {
+    let parsed = parseConfig(config);
     return getLeaderboards(type, parsed);
   }
-  static async getGuildList(config = {}) {
-    let parsed = await parseConfig(config);
+  static getGuildList(config = {}) {
+    let parsed = parseConfig(config);
     return getGuildList(parsed);
   }
 }

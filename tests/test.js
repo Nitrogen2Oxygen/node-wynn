@@ -1,18 +1,28 @@
 const api = require("../index.js");
 require("dotenv").config();
 const { KEY } = process.env;
-const config = {
+const config1 = {
   key: KEY,
   url: "https://api.wynncraft.com",
   agent: `NodeWynn/test`,
   timeout: 20000,
   removeMeta: true,
 };
+const config2 = {
+  timeout: 100,
+  removeMeta: false,
+};
+
 const shouldLog = false; // For me testing stuff
 
-test();
+const NodeWynn = new api(config1);
+console.log(NodeWynn);
 
-async function test() {
+test({}, "Test with no config");
+test(config1, "Test with config 1");
+test(config2, "Test with config 2");
+
+async function test(config, final) {
   let success = [];
   let fail = [];
   try {
@@ -90,5 +100,5 @@ async function test() {
     console.error(err);
     fail.push("guildList");
   }
-  console.log({ success, fail });
+  console.log(final, { success, fail });
 }
