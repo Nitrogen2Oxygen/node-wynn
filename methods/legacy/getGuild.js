@@ -9,9 +9,9 @@ module.exports = (guild, config) => {
     let url = `${config.url}/public_api.php?action=guildStats&command=${guild}`;
     fetch(url, config.key, config.agent, config.timeout)
       .then((json) => {
-        if (json.error) reject(json);
+        if (json.error) return reject(json);
         if (config.removeMeta) delete json.request;
-        resolve(json);
+        return resolve(json);
       })
       .catch((err) => {
         return reject(err);

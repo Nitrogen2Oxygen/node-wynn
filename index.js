@@ -50,7 +50,6 @@ class NodeWynn {
    */
   constructor(config) {
     this.config = parseConfig(config);
-    console.log(this.config);
   }
 
   /**

@@ -9,7 +9,7 @@ module.exports = (type, config) => {
     let url = `${config.url}/public_api.php?action=statsLeaderboard&type=${type}&timeframe=alltime`;
     fetch(url, config.key, config.agent, config.timeout)
       .then((json) => {
-        if (json.data.length < 1) reject(json);
+        if (json.data.length < 1) return reject(json);
         if (config.removeMeta) return resolve(json.data);
         return resolve(json);
       })
