@@ -22,19 +22,29 @@ yarn add node-wynn
 
 ## Getting Started
 
-You can require the entire package like this:
+### Basics
+
+You can create a class with your config:
 
 ```js
 const NodeWynn = require("node-wynn");
+const wynn = new NodeWynn(/* Config */);
+wynn.getPlayer(/* Player */);
 ```
 
-Or for ease of use, you can call functions directly like this:
+For ease of use, you can call functions directly like this. For the remainder of the documentation, we will use this example:
+
+```js
+const NodeWynn = require("node-wynn");
+NodeWynn.getPlayer(/* Player */, /* Config */);
+```
+
+Or like this:
 
 ```js
 const { getPlayer, getGuild } = require("node-wynn");
+getPlayer(/* Player */, /* Config */);
 ```
-
-## Basics
 
 ### Example
 
@@ -194,7 +204,7 @@ NodeWynn
   });
 ```
 
-#### Get Leaderboards
+#### getLeaderboard
 
 Gets leaderboard data from one of the 3 leaderboards: player, guild and pvp
 

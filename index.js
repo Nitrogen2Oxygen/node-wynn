@@ -8,16 +8,16 @@
 var version = require("./package.json").version;
 
 // v2
-const getPlayer = require("./methods/v2/getPlayer.js");
-const getIngredient = require("./methods/v2/getIngredient.js");
-const getRecipe = require("./methods/v2/getRecipe.js");
+const getPlayer = require("./lib/v2/getPlayer.js");
+const getIngredient = require("./lib/v2/getIngredient.js");
+const getRecipe = require("./lib/v2/getRecipe.js");
 // Legacy
-const getTerritories = require("./methods/legacy/getTerritories.js");
-const getOnline = require("./methods/legacy/getOnline.js");
-const getGuild = require("./methods/legacy/getGuild.js");
-const getItem = require("./methods/legacy/getItem.js");
-const getLeaderboards = require("./methods/legacy/getLeaderboards.js");
-const getGuildList = require("./methods/legacy/getGuildList.js");
+const getTerritories = require("./lib/legacy/getTerritories.js");
+const getOnline = require("./lib/legacy/getOnline.js");
+const getGuild = require("./lib/legacy/getGuild.js");
+const getItem = require("./lib/legacy/getItem.js");
+const getLeaderboards = require("./lib/legacy/getLeaderboards.js");
+const getGuildList = require("./lib/legacy/getGuildList.js");
 
 const defaultConfig = {
   key: null,
@@ -50,13 +50,13 @@ class NodeWynn {
    */
   constructor(config) {
     this.config = parseConfig(config);
-    console.log(this.config);
   }
 
   /**
    * Class methods will use the config provided in the constructor.
    * Used for less redundancy.
    */
+
   getPlayer(input) {
     return getPlayer(input, this.config);
   }
