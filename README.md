@@ -1,6 +1,7 @@
 # Node Wynn
 
 An UPDATED Wynncraft Node.js library. This is refactored and modernized JavaScript wrapper from https://github.com/DevChromium/WynnJS.
+**NOTE:** I will not be maintaining this freqently. If something is outdated, feel free to get into contact with me.
 
 ## Introduction
 
